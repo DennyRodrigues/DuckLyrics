@@ -1,0 +1,13 @@
+:root{
+    --myYellow: rgb(253, 255, 126)
+
+}
+
+.MainLayout{
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
+
+}

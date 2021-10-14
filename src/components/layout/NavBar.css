@@ -1,0 +1,31 @@
+.nav-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    padding:0;
+    margin: 0;
+    background: linear-gradient(0deg, rgb(199, 41, 41), #852323);
+    
+}
+
+.main-nav-bar{
+    text-align: center;
+    width:80%;
+    border-bottom:2px solid saddlebrown;
+    height: 2em;
+    
+    
+}
+.main-nav-bar a {
+    position: relative;
+    left:35%;
+    text-align: right;
+    color:rgb(253, 255, 126);
+    font-size: 1.2em;
+}
+.main-nav-bar h2{
+    text-align: center;
+    display: inline;
+    color: rgb(253, 255, 126);
+}
