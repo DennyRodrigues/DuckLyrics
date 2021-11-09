@@ -18,23 +18,15 @@ function App() {
   return (
     <ContextSearchProvider>
       <Router>
-        <Layout>
+        
           <Routes>
-            <Route exact path="/">
-              <Search />
-              <LyricsList />
-            </Route>
-            <Route exact path="/about">
-              <About />
-            </Route>
-            <Route path="/artist/:id">
-              <ArtistPage/>
-            </Route>
-            <Route exact path="/lyrics/:id">
-              <LyricPage />
+            <Route exact path="/" element={<Layout/>}>
+              <Route path="/" element={ <div> <Search/> <LyricsList /> </div>}/>
+            <Route exact path="/about" element={<About />}/>
+            <Route path="/artist/:id" element={<ArtistPage/>}/>
+            <Route exact path="/lyrics/:id" element={<LyricPage />}/>
             </Route>
           </Routes>
-        </Layout>
       </Router>
     </ContextSearchProvider>
   );
