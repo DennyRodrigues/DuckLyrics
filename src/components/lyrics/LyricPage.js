@@ -44,7 +44,6 @@ function LyricPage(props) {
     setDuckTranslation('');
     setLyrics(englishTranslation);
   }
-  console.log(songData);
 
 
   if (songData) {
@@ -52,10 +51,11 @@ function LyricPage(props) {
     const youtubeLink = songData.media.filter(
       (song) => song.provider === "youtube"
     )[0];
-    // Replace to make a youtuber embbed link instead of a watch(This will allow the url to be placed  in the inframe tag)
+    // Replace to make a youtuber embbed link instead of a watch(This will allow the url to be placed  in the inframe tag). Change 
     var youtuberLinkEmbed = '';
     if (youtubeLink) {
       youtuberLinkEmbed = youtubeLink.url.replace("watch?v=", "embed/");
+      youtuberLinkEmbed = youtubeLink.url.replace("http", "$&s");
     }
     return (
       <div className={styles.LyricPage}>

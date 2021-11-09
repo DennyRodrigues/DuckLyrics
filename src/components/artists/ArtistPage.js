@@ -24,7 +24,6 @@ const ArtistPage = () => {
       .catch((err) => console.log(err));
   }, [id]);
 
-  console.log(artistData);
   if (artistData) {
     return (
       <div className={styles.ArtistPage}>
