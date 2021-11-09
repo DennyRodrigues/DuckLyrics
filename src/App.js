@@ -6,7 +6,7 @@ import { ContextSearchProvider } from './components/store/ContextSearch';
 import {
   BrowserRouter as Router,
   Route,
-  Switch,
+  Routes,
 } from "react-router-dom";
 import LyricPage from './components/lyrics/LyricPage';
 import About from './components/about/About';
@@ -19,7 +19,7 @@ function App() {
     <ContextSearchProvider>
       <Router>
         <Layout>
-          <Switch>
+          <Routes>
             <Route exact path="/">
               <Search />
               <LyricsList />
@@ -33,7 +33,7 @@ function App() {
             <Route exact path="/lyrics/:id">
               <LyricPage />
             </Route>
-          </Switch>
+          </Routes>
         </Layout>
       </Router>
     </ContextSearchProvider>
