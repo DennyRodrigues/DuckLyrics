@@ -1,0 +1,43 @@
+.HitPreview{
+    width: 150px;
+    border: 1px solid black;
+    background: #ddd;
+    padding: 10px;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    min-height: 120px;
+    height: fit-content;
+    justify-content: space-between;
+    align-content: space-between;
+}
+.hitPreviewTitle{
+    font-weight: 600;
+}
+.hitPreviewArtist{
+    font-weight: 400;
+}
+
+.HitPreview button{
+    margin: auto;
+    margin-top: 5px;
+    width: 100%;
+    display:block;
+    background-image: linear-gradient(-315deg, var(--colors-gradient));
+    font-weight:bold;
+    justify-self: flex-end;
+    align-self: flex-end;
+    padding: 5px;
+    
+}
+.HitPreview button:active{
+    outline: none;
+}
+@media (max-width:768px){
+    .HitPreview{
+        width: 45%;
+        min-height: fit-content;
+    
+    }   
+}

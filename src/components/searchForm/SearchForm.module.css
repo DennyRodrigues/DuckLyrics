@@ -1,34 +1,42 @@
 .SearchForm{
-    border: 1px solid black;
-    padding: 10px;
+    margin: auto auto;
     width: 100%;
     display: flex;
     flex-direction: column;
     overflow: hidden;
     position: relative;
+    margin-bottom: 10px;
 }
 .SearchForm label{
     display: block;
     text-align: center;
+    font-size: 1.4em;
 }
 .SearchForm input{
-    background-color: rgb(190, 190, 190);
-    padding:5px;
-    margin: 5px;
-    color: white;
+    background-color: #eee;
+    padding: 5px;
+    margin-top: 5px;
+    font-size: 1.2em;
+    color:black;
+    
 }
 .SearchForm input:focus{
     color:black;
     outline: none;
-    background-color: rgb(253, 255, 126);
+    background-color: rgb(111, 116, 91);
+    background-color: #f0f34fc5;
 }
 .SearchForm button{
     display: block;
     background-color: rgb(211, 120, 68);
-    color: snow;
+    background:  linear-gradient(-315deg, var(--colors-gradient));
+    color: black;
     padding:5px;
-    margin: 5px;
+    margin-top: 5px;
+    font-size: 1em;
+    font-weight:550;
 }
 .SearchForm button:active{
+    outline: none;
     background-color: slategray;
 }

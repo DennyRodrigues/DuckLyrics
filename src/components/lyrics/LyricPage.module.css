@@ -1,0 +1,105 @@
+.LyricPage {
+  background: #eee;
+  padding: 0px 24px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+.LyricPage h1 {
+  font-size: 48px;
+  text-align: center;
+  margin: auto;
+  margin: 24px 48px 48px 48px;
+  
+  grid-row: 1;
+  grid-column: 1/-1;
+  column-gap: 24px;
+}
+.LyricPage .row {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 32px;
+  align-items: center;
+}
+.LyricPageInfoBox {
+  margin: 5px;
+  max-width: 450px;
+}
+.LyricPageInfoBox img {
+  display: block;
+  object-fit: contain;
+  margin: auto;
+  margin-bottom: 24px;
+}
+.LyricPageInfoBox ul {
+  list-style: none;
+  margin: none;
+  padding: 0;
+  border-collapse: collapse;
+  border: 1px solid black;
+  border-bottom: none;
+}
+.LyricPageInfoBox li {
+  padding: 2px;
+  border-bottom: 1px solid black;
+  color: #444;
+  text-overflow: clip;
+}
+.LyricPageInfoBox li span {
+  color: #000;
+  font-weight: 500;
+}
+.LyricPageInfoBox button {
+  display: block;
+  min-height: 2em;
+  width: 100%;
+  background-image: linear-gradient(-315deg, var(--colors-gradient));
+  font-weight: bold;
+  font-size: 1em;
+  text-align: center;
+}
+
+.LyricsBox {
+  padding: 5px;
+
+  grid-row: 2
+}
+.LyricsBox h2 {
+  text-align: center;
+  margin: 10px auto;
+}
+
+.LyricsBox button {
+  display: block;
+  background-image: linear-gradient(-315deg, var(--colors-gradient));
+  padding: 0 10px;
+  margin: auto;
+  margin-bottom: 2em;
+  text-align: center;
+  font-weight: bold;
+  min-height: 2em;
+  font-size: 1em;
+}
+
+.LyricsBox pre {
+  white-space: pre-line;
+  font-size: 1em;
+  line-height: 2em;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 0px 10px 20px 5px;
+  
+}
+@media (max-width: 768px) {
+  .LyricPage {
+    flex-direction: column;
+  }
+  .LyricsBox pre {
+    columns: 1;
+    text-align: justify;
+    margin-right: 10px;
+  }
+  .lyricsBox button {
+    width: 100%;
+  }
+}

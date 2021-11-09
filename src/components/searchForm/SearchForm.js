@@ -1,24 +1,25 @@
-import {useState} from 'react';
+import {useContext, useState} from 'react';
+import ContextSearch from '../store/ContextSearch';
 import styles from './SearchForm.module.css'
 
 function SearchForm(props) {
   const [songTitle, setSongTitle] = useState('')
-  function submitHandler(event) {
+  const contextQuery =  useContext(ContextSearch);
+  const submitHandler = (event) => {
      event.preventDefault();
      let songTitleSubmited = songTitle;
-     setSongTitle('');
-
+     contextQuery.search(songTitleSubmited);
+     setSongTitle("");
   }
-  function updateSongTitle(event){
+  const updateSongTitle = (event) => {
     setSongTitle(event.target.value)
   }
 
   return (
-    <form className={styles.SearchForm}>
+    <form className={styles.SearchForm} onSubmit={submitHandler}>
       <label> Search for lyrics </label>
-      <input type="text" onChange={updateSongTitle}/>
-      <button type="submit" onSubmit={submitHandler} 
-      >Search</button>
+      <input type="text" onChange={updateSongTitle} value={songTitle} />
+      <button type="submit">Search</button>
     </form>
   );
 }

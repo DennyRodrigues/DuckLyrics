@@ -1,0 +1,57 @@
+.ArtistPage {
+  background: #eee;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.ArtistPage h1 {
+  display: block;
+  font-size: 48px;
+  text-align: center;
+  margin: auto;
+  margin: 48px 48px 48px 48px;
+  
+}
+.ArtistPage .ImgWrapper {
+  margin: auto;
+  max-height: 500px;
+  max-width: 500px;
+  
+}
+.ArtistPage .ImgWrapper img {
+  display: block;
+  object-fit: contain;
+  height: 100%;
+  width: 100%;
+  margin: auto;
+}
+.ArtistPage .about {
+  padding: 5px;
+  margin-bottom: 10px;
+}
+.ArtistPage .about h2 {
+  text-align: center;
+}
+.ArtistPage .about pre {
+  margin: 0px 5px 0px 5px;
+  columns: 2;
+  column-gap: 2em;
+  white-space: pre-line;
+  text-align: justify;
+  font-size: 1em;
+  line-height: 2em;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+  
+  
+}
+@media (max-width: 768px) {
+  .ArtistPage {
+    flex-direction: column;
+  }
+  .ArtistPage .about pre {
+    columns: 1;
+    text-align: justify;
+    margin-right: 10px;
+  }
+}

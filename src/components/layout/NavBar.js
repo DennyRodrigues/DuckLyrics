@@ -1,12 +1,25 @@
 import "./NavBar.css";
+import { Link } from "react-router-dom";
+import DuckIcon from "../icon/DuckIcon";
+
 function NavBar() {
   return (
-    <nav className="nav-container">
-      <div className=" main-nav-bar">
-          <h2>Ducklyrics</h2>
-          <a>About</a>
-      </div>
-    </nav>
+    <div className="nav-container">
+      <nav className="main-nav-bar">
+      <Link to="/" replace className="Link Search">
+          Search
+        </Link>
+        <Link to="/" replace className="Link title">
+          <div className="titleContainer">
+          <DuckIcon className="responsive-logo"/>
+          Ducklyrics
+          </div>    
+        </Link>
+        <Link to="/about" className="Link About">
+          About
+        </Link>
+      </nav>
+    </div>
   );
 }
 
