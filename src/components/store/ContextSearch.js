@@ -26,7 +26,7 @@ export const ContextSearchProvider = (props) => {
   const [isLastPage, setIsLastPage] = useState(false)
 
     const getSongsResponse = (query, pageNum) => {
-    fetch(`http://api.genius.com/search?q=${query}&per_page=15&page=${pageNum}&access_token=${acessToken}`)
+    fetch(`https://api.genius.com/search?q=${query}&per_page=15&page=${pageNum}&access_token=${acessToken}`)
       .then((res) => res.json())
       .then((res) => {
         setSearchResponse((prev) => [...prev, ...res.response.hits]);
