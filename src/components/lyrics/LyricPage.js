@@ -55,7 +55,7 @@ function LyricPage(props) {
     var youtuberLinkEmbed = '';
     if (youtubeLink) {
       youtuberLinkEmbed = youtubeLink.url.replace("watch?v=", "embed/");
-      youtuberLinkEmbed = youtubeLink.url.replace("http", "$&s");
+      youtuberLinkEmbed = youtubeLink.url.replace("http", "https");
     }
     return (
       <div className={styles.LyricPage}>
