@@ -12,7 +12,7 @@ const ArtistPage = () => {
   useEffect(() => {
     // Get Artist information
     fetch(
-      `http://api.genius.com/artists/${id}?access_token=${acessToken}&text_format=plain`
+      `https://api.genius.com/artists/${id}?access_token=${acessToken}&text_format=plain`
     )
       .then((res) => {
         return res.json();
