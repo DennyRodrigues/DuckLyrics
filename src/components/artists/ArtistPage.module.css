@@ -12,27 +12,27 @@
   margin: 32px 48px 32px 48px;
   
 }
-.ArtistPage .ImgWrapper {
+ .ImgWrapper {
   margin: auto;
   max-height: 500px;
   max-width: 500px;
   
 }
-.ArtistPage .ImgWrapper img {
+ .ImgWrapper img {
   display: block;
   object-fit: contain;
   height: 100%;
   width: 100%;
   margin: auto;
 }
-.ArtistPage .about {
+.about {
   padding: 5px;
   margin-bottom: 10px;
 }
-.ArtistPage .about h2 {
+.about h2 {
   text-align: center;
 }
-.ArtistPage .about pre {
+.about pre {
   margin: 0px 5px 0px 5px;
   columns: 2;
   column-gap: 2em;
@@ -44,4 +44,10 @@
 
   
   
+}
+@media (max-width:885px){
+  .about pre{
+    columns:1;
+
+  }
 }
