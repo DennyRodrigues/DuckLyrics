@@ -34,10 +34,15 @@
 .HitPreview button:active{
     outline: none;
 }
-@media (max-width:768px){
+@media (max-width:885px){
+    .HitPreview{
+        width: 30%;
+        min-height: fit-content;
+    }   
+}
+@media (max-width:610px){
     .HitPreview{
         width: 45%;
         min-height: fit-content;
-    
     }   
 }

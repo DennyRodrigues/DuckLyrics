@@ -18,7 +18,13 @@
     height: 2em;
     margin-top: 50px;  
 }
-@media (max-width:768px){
+@media (max-width:885px){
+    .MainLayout{
+        width: 90%;
+    
+    }   
+}
+@media (max-width:610px){
     .MainLayout{
         width: 95%;
     

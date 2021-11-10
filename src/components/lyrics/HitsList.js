@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import ContextSearch from "../store/ContextSearch";
 import HitPreview from "./HitPreview";
-import styles from "./HitList.module.css";
+import styles from "./HitsList.module.css";
 import Spinner from "../layout/Spinner";
 import DuckIcon from "../icon/DuckIcon";
 

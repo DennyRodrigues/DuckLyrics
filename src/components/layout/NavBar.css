@@ -45,7 +45,10 @@
     align-items: center;
     justify-content: center;
 }
-@media(max-width:768px){
+@media (max-width:885px){
+    .main-nav-bar{
+        width:90%;
+    }
     .main-nav-bar .Search{
         padding-left:0;
     }

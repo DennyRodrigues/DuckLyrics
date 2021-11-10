@@ -9,7 +9,7 @@
   font-size: 48px;
   text-align: center;
   margin: auto;
-  margin: 48px 48px 48px 48px;
+  margin: 32px 48px 32px 48px;
   
 }
 .ArtistPage .ImgWrapper {
@@ -44,14 +44,4 @@
 
   
   
-}
-@media (max-width: 768px) {
-  .ArtistPage {
-    flex-direction: column;
-  }
-  .ArtistPage .about pre {
-    columns: 1;
-    text-align: justify;
-    margin-right: 10px;
-  }
 }
