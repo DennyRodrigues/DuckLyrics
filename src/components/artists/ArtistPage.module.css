@@ -48,6 +48,6 @@
 @media (max-width:885px){
   .about pre{
     columns:1;
-
+    text-align:left;
   }
 }
