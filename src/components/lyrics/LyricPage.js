@@ -24,7 +24,7 @@ function LyricPage(props) {
       });
     }
     //Get Songs information
-    fetch(`https://api.genius.com/songs/${id}?access_token=${acessToken}`)
+    fetch(`https://add-cors-to-requests.denny-rodrigues-carmo.workers.dev/https://api.genius.com/songs/${id}?access_token=${acessToken}`)
       .then((res) => {
         return res.json();
       })
