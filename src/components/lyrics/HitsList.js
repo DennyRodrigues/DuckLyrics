@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useRef, useCallback } from "react";
 import ContextSearch from "../store/ContextSearch";
 import HitPreview from "./HitPreview";
 import styles from "./HitsList.module.css";
@@ -11,12 +11,17 @@ function LyricsList() {
   const [hitsList, setHitsList] = useState('');
   const [isLoadingMore, setIsLoadingMore] = useState(false);
 
-  // Check if user reach the end of the page
-  const handleScroll = () => {
-    if (window.innerHeight + document.documentElement.scrollTop >= document.documentElement.offsetHeight - 10) {
-    setIsLoadingMore(true)}
-  };
-
+  const observer = useRef()
+  const lastSongElementRef = useCallback(node => {
+    if (observer.current) observer.current.disconnect()
+    observer.current = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) {
+        setIsLoadingMore(true);
+        console.log('worked')
+      }
+    })
+    if (node) observer.current.observe(node)
+  }, [])
   // Get more songs to the context component when the user reach the end of the page
 
   //Check if the user is requesting more song
@@ -30,17 +35,6 @@ function LyricsList() {
     setIsLoadingMore(false);
   }, [isLoadingMore, contextSearchResult]);
 
-  // Add Eventwhen user scroll, this event will call a function check if user reach the end of the page.
-  useEffect(() => {
-    window.addEventListener("touchmove", handleScroll);
-    window.addEventListener("scroll", handleScroll);
-    return () => 
-    {
-      window.removeEventListener("touchmove", handleScroll);
-      window.removeEventListener("scroll", handleScroll);
-  }
-  }, []);
-
   //  Using the context component, add the songs to  HitsList the first time the component render, and  Load more songs when the user gets to the end of the page.
   useEffect(() => {
       setHitsList(contextSearchResult.songs.trackList)
@@ -50,9 +44,13 @@ function LyricsList() {
   if (hitsList) {
     return (
       <div className={styles.HitList}>
-        {hitsList.map((hit) => (
-          <HitPreview hit={hit.result} key={hit.result.id} />
-        ))}
+        {hitsList.map((hit, index) => {
+          if (hitsList.length === index + 1) {
+            return <div ref={lastSongElementRef} key="lastElementContainerRef"><HitPreview hit={hit.result} key={hit.result.id}/></div>
+          }
+          return <HitPreview hit={hit.result} key={hit.result.id} />
+        }
+        )}
         {contextSearchResult.isLoading ? <div>...Loading More songs <DuckIcon></DuckIcon></div>: <div></div>}
         {contextSearchResult.isLastPage? <div> No More songs Found ;-;</div>: <div></div>}
       </div>
