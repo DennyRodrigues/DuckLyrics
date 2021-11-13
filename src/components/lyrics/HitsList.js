@@ -12,11 +12,10 @@ function LyricsList() {
   const [isLoadingMore, setIsLoadingMore] = useState(false);
 
   // Check if user reach the end of the page
-  const  handleScroll = () => {
-    if ((window.innerHeight + Math.ceil(window.pageYOffset)) >= document.body.offsetHeight) {
-      setIsLoadingMore(true);
-    }
-};
+  const handleScroll = () => {
+    if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return;
+    setIsLoadingMore(true);
+  };
 
   // Get more songs to the context component when the user reach the end of the page
 
@@ -33,19 +32,18 @@ function LyricsList() {
 
   // Add Eventwhen user scroll, this event will call a function check if user reach the end of the page.
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll, {
-      passive: true
-  });
-    return () => {
-      document.body.removeEventListener('touchmove', handleScroll)
-       window.removeEventListener("scroll", handleScroll);
-      }
+    window.addEventListener("touchmove", handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => 
+    {
+      window.removeEventListener("touchmove", handleScroll);
+      window.removeEventListener("scroll", handleScroll);
+  }
   }, []);
 
   //  Using the context component, add the songs to  HitsList the first time the component render, and  Load more songs when the user gets to the end of the page.
   useEffect(() => {
       setHitsList(contextSearchResult.songs.trackList)
-      
 
   }, [contextSearchResult]);
 
