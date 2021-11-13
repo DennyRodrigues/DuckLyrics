@@ -12,11 +12,12 @@ function LyricsList() {
   const [isLoadingMore, setIsLoadingMore] = useState(false);
 
   // Check if user reach the end of the page
-  const  handleScroll = () =>{ 
-    if( window.scrollY + window.innerHeight >= document.body.scrollHeight ) { 
+  const  handleScroll = () => {
+    if ((window.innerHeight + Math.ceil(window.pageYOffset)) >= document.body.offsetHeight) {
       setIsLoadingMore(true);
     }
-}
+};
+
   // Get more songs to the context component when the user reach the end of the page
 
   //Check if the user is requesting more song
@@ -32,7 +33,6 @@ function LyricsList() {
 
   // Add Eventwhen user scroll, this event will call a function check if user reach the end of the page.
   useEffect(() => {
-    document.body.addEventListener('touchmove', handleScroll)
     window.addEventListener('scroll', handleScroll, {
       passive: true
   });
