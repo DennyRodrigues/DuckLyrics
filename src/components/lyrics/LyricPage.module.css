@@ -1,6 +1,6 @@
 .LyricPage {
   background: #eee;
-  padding: 0px 24px;
+  padding: 0px 24px 24px 0px;
   display: grid;
   grid-template-columns: 1.5fr 1fr;
 }
@@ -81,7 +81,7 @@
   font-size: 1em;
   line-height: 2em;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  margin: 0px 10px 20px 5px;
+  margin: 0px 10px 0px 5px;
 }
 .YoutubeContainer{
   grid-column: 2;
@@ -97,6 +97,9 @@
 @media (max-width:885px){
   .LyricPage{
     grid-template-columns: 1fr;
+  }
+  .LyricPage h1 {
+    font-size: 36px;
   }
   .LyricsBox, .LyricPageInfoBox, .YoutubeContainer {
     grid-column: auto;
