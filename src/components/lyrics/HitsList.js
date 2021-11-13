@@ -14,7 +14,6 @@ function LyricsList() {
   // Check if user reach the end of the page
   const handleScroll = () => {
     if (window.innerHeight + document.documentElement.scrollTop >= document.documentElement.offsetHeight - 10) {
-    console.log(window.innerHeight, document.documentElement.scrollTop, document.documentElement.offsetHeight)
     setIsLoadingMore(true)}
   };
 
