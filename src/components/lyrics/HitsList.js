@@ -10,19 +10,26 @@ function LyricsList() {
   const contextSearchResult = useContext(ContextSearch);
   const [hitsList, setHitsList] = useState('');
   const [isLoadingMore, setIsLoadingMore] = useState(false);
-
   const observer = useRef()
+
+
   const lastSongElementRef = useCallback(node => {
+    // Define the options in IntersectionObserver(The event will be tigger a little before the user actually reaches the end of the page)
+    let options = {
+      root: document.querySelector('#scrollArea'),
+      rootMargin: '20px',
+      threshold: 1.0
+    }
+    
     if (observer.current) observer.current.disconnect()
     observer.current = new IntersectionObserver(entries => {
       if (entries[0].isIntersecting) {
         setIsLoadingMore(true);
-        console.log('worked')
+        console.log('works')
       }
-    })
+    }, options)
     if (node) observer.current.observe(node)
   }, [])
-  // Get more songs to the context component when the user reach the end of the page
 
   //Check if the user is requesting more song
   useEffect(() => {
