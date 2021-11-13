@@ -38,10 +38,14 @@ function LyricsList() {
 
   // Add Eventwhen user scroll, this event will call a function check if user reach the end of the page.
   useEffect(() => {
+    document.body.addEventListener('touchmove', handleScroll)
     window.addEventListener('scroll', handleScroll, {
       passive: true
   });
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      document.body.removeEventListener('touchmove', handleScroll)
+       window.removeEventListener("scroll", handleScroll);
+      }
   }, []);
 
   //  Using the context component, add the songs to  HitsList the first time the component render, and  Load more songs when the user gets to the end of the page.
