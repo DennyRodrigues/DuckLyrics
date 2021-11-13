@@ -18,7 +18,7 @@ function LyricPage(props) {
   useEffect(() => {
     //Get lyrics of the song
     if (url) {
-      getLyrics(`https://add-cors-to-requests.denny-rodrigues-carmo.workers.dev/${url}`).then((lyrics) => {
+      getLyrics(`https://add-cors-to-requests.denny-rodrigues-carmo.workers.dev/?${url}`).then((lyrics) => {
         setLyrics(lyrics);
         setEnglishTranslation(lyrics);
       });
