@@ -12,15 +12,9 @@ function LyricsList() {
   const [isLoadingMore, setIsLoadingMore] = useState(false);
 
   // Check if user reach the end of the page
-  const handleScroll = () => {
-    const {
-        scrollTop,
-        scrollHeight,
-        clientHeight
-    } = document.documentElement;
-
-    if (scrollTop + clientHeight >= scrollHeight - 5) {
-          setIsLoadingMore(true);
+  const  handleScroll = () =>{ 
+    if( window.scrollY + window.innerHeight >= document.body.scrollHeight ) { 
+      setIsLoadingMore(true);
     }
 }
   // Get more songs to the context component when the user reach the end of the page
