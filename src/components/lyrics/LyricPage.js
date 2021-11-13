@@ -18,13 +18,13 @@ function LyricPage(props) {
   useEffect(() => {
     //Get lyrics of the song
     if (url) {
-      getLyrics(url).then((lyrics) => {
+      getLyrics(`https://add-cors-to-requests.denny-rodrigues-carmo.workers.dev/${url}`).then((lyrics) => {
         setLyrics(lyrics);
         setEnglishTranslation(lyrics);
       });
     }
     //Get Songs information
-    fetch(`https://add-cors-to-requests.denny-rodrigues-carmo.workers.dev/https://api.genius.com/songs/${id}?access_token=${acessToken}`)
+    fetch(`https://api.genius.com/songs/${id}?access_token=${acessToken}`)
       .then((res) => {
         return res.json();
       })
