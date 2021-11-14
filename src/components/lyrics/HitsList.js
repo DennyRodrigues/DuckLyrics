@@ -16,9 +16,9 @@ function LyricsList() {
   const lastSongElementRef = useCallback(node => {
     // Define the options in IntersectionObserver(The event will be tigger a little before the user actually reaches the end of the page)
     let options = {
-      root: null,
+      root: document.querySelector('.HitList'),
       rootMargin: '0px 0px 100px 0px',
-      threshold: 0.8
+      threshold: 0.5
     }
     
     if (observer.current) observer.current.disconnect()
