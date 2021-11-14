@@ -1,58 +1,76 @@
-import { useState, useEffect, useContext, useCallback } from "react";
+import { useState, useEffect, useContext, useRef, useCallback } from "react";
 import ContextSearch from "../store/ContextSearch";
 import HitPreview from "./HitPreview";
 import styles from "./HitsList.module.css";
 import Spinner from "../layout/Spinner";
 import DuckIcon from "../icon/DuckIcon";
-import InfiniteScroll from 'react-infinite-scroll-component';
 
 function LyricsList() {
   const contextSearchResult = useContext(ContextSearch);
-  const [hitsList, setHitsList] = useState('');
-  const [stillHasMorePages, SetStillHasMorePages] = useState(true);
+  const [hitsList, setHitsList] = useState("");
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
 
-  const loadMore = useCallback(node => {
-    contextSearchResult.loadMore()
-  }, [contextSearchResult])
+  const observer = useRef();
 
+  const lastSongElementRef = useCallback(
+    (node) => {
+      if (observer.current) observer.current.disconnect();
+      observer.current = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setIsLoadingMore(true)
+          }
+        })
+
+        })
+      if (node) observer.current.observe(node)
+    }, [])
+
+
+    useEffect(() => {
+      if (!isLoadingMore) return
+      if (!contextSearchResult.isLastPage){
+        contextSearchResult.loadMore();
+      }
+     setIsLoadingMore(false);
+     
+    }, [isLoadingMore, contextSearchResult])
   //  Using the context component, add the songs to  HitsList the first time the component render, and  Load more songs when the user gets to the end of the page.
   useEffect(() => {
-    if(!contextSearchResult.isLastPage){
-      setHitsList(contextSearchResult.songs.trackList)
-    }
-    else{
-      SetStillHasMorePages(false);
-    }
-
+    setHitsList(contextSearchResult.songs.trackList);
   }, [contextSearchResult]);
-  //  trying to fix for mobiles::: https://github.com/ankeetmaini/react-infinite-scroll-component/issues/277
-
 
   if (hitsList) {
     return (
-      <div>
-      <div className={styles.HitList} id="hitList">
+      <div className={styles.HitList}>
         {hitsList.map((hit, index) => {
-          return <HitPreview hit={hit.result} key={hit.result.id} />
-        }
+          if (index >= hitsList.length - 4) {
+            return (
+              <div ref={lastSongElementRef} key={`${hit.result.id}-container `}>
+                <HitPreview hit={hit.result} key={hit.result.id} />
+              </div>
+            );
+          } else {
+            return <HitPreview hit={hit.result} key={hit.result.id} />;
+          }
+        })}
+        {contextSearchResult.isLoading ? (
+          <div>
+            ...Loading More songs <DuckIcon></DuckIcon>
+          </div>
+        ) : (
+          <div></div>
         )}
-      </div>
-      <InfiniteScroll
-  dataLength={hitsList.length} //This is important field to render the next data
-  next={loadMore}
-  hasMore={stillHasMorePages}
-  loader={<div>...Loading More songs <DuckIcon></DuckIcon></div>}
-  endMessage={
-    <div> <DuckIcon></DuckIcon> <span> No more songs found ;-; </span></div>
-  }
->
-</InfiniteScroll>
+        {contextSearchResult.isLastPage ? (
+          <div> No More songs Found ;-;</div>
+        ) : (
+          <div></div>
+        )}
       </div>
     );
   } else {
     return <Spinner />;
   }
 }
-
 
 export default LyricsList;
