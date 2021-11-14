@@ -18,7 +18,7 @@ function LyricsList() {
     let options = {
       root: document.querySelector('#scrollArea'),
       rootMargin: '40px',
-      threshold: 1.0
+      threshold: 0
     }
     
     if (observer.current) observer.current.disconnect()
