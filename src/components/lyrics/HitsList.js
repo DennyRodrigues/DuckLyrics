@@ -16,7 +16,7 @@ function LyricsList() {
   const lastSongElementRef = useCallback(node => {
     // Define the options in IntersectionObserver(The event will be tigger a little before the user actually reaches the end of the page)
     let options = {
-      root: document.querySelector('#scrollArea'),
+      root: null,
       rootMargin: '40px',
       threshold: 0
     }
