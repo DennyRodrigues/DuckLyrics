@@ -17,8 +17,8 @@ function LyricsList() {
     // Define the options in IntersectionObserver(The event will be tigger a little before the user actually reaches the end of the page)
     let options = {
       root: null,
-      rootMargin: '0px 0px -200px 0px',
-      threshold: 0
+      rootMargin: '0px 0px 100px 0px',
+      threshold: 0.8
     }
     
     if (observer.current) observer.current.disconnect()
