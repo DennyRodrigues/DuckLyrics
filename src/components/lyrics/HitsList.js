@@ -12,8 +12,15 @@ function LyricsList() {
 
   const observer = useRef();
 
+  
+
   const lastSongElementRef = useCallback(
     (node) => {
+      let options = {
+        root: document.querySelector('#scrollArea'),
+        rootMargin: '0px 0px 250px 0px',
+        threshold: 1.0
+      }
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver(entries => {
         entries.forEach(entry => {
@@ -22,7 +29,7 @@ function LyricsList() {
           }
         })
 
-        })
+        }, options)
       if (node) observer.current.observe(node)
     }, [])
 
