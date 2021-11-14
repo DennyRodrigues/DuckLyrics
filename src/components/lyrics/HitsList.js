@@ -37,7 +37,10 @@ function LyricsList() {
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("touchmove", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("touchmove", handleScroll);
+      window.removeEventListener("scroll", handleScroll);
+    }
   }, []);
 
   //  Using the context component, add the songs to  HitsList the first time the component render, and  Load more songs when the user gets to the end of the page.
