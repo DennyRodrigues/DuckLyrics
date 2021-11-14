@@ -10,6 +10,11 @@ function LyricsList() {
   const [hitsList, setHitsList] = useState("");
   const [isLoadingMore, setIsLoadingMore] = useState(false);
 
+  
+  const loadMoreHandler = () =>{
+    setIsLoadingMore(true)
+  }
+
   const observerLast = useRef();
   const lastSongElementRef = useCallback(
     (node) => {
@@ -68,6 +73,7 @@ function LyricsList() {
 
   if (hitsList) {
     return (
+      <div className={styles.HitListContainer}>
       <div className={styles.HitList}>
         {hitsList.map((hit, index) => {
           if (index === hitsList.length - 8) {
@@ -80,7 +86,9 @@ function LyricsList() {
             return <HitPreview hit={hit.result} key={hit.result.id} />;
           }
         })}
-        <div className="Loader" ref={endOfList}>
+        </div>
+        <div className={styles.LoaderContainer} ref={endOfList}>
+          <button className={styles.LoadMoreButton} onClick={loadMoreHandler}>Load More</button>
         {contextSearchResult.isLoading ? (
           <div>
             ...Loading More songs <DuckIcon></DuckIcon>

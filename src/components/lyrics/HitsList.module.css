@@ -6,12 +6,31 @@
     flex-wrap:wrap;
     column-gap: 5%;
     row-gap: 70px;
-    -webkit-user-drag:element;
+    margin-bottom: 24px;
+}
+.LoaderContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.LoadMoreButton{
+        display: block;
+        min-height: 2em;
+        background-image: linear-gradient(-315deg, var(--colors-gradient));
+        font-weight: bold;
+        font-size: 1em;
+        text-align: center;
+        padding: 12px 64px;
+        display: none;
+
 }
 @media (max-width:885px){
     .HitList{
         column-gap: 3%;
         row-gap: 32px;
-    
-    }   
+    }
+    .LoadMoreButton{
+        display: block;
+    }
 }
