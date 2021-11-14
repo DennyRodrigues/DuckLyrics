@@ -25,6 +25,11 @@ function LyricsList() {
     }
 
   }, [contextSearchResult]);
+  //  trying to fix for mobiles::: https://github.com/ankeetmaini/react-infinite-scroll-component/issues/277
+  useEffect(() => {
+    const scrollable = document.querySelector(styles.HitList);
+    scrollable.scrollTop = 0
+    } ,[hitsList])
 
   if (hitsList) {
     return (
