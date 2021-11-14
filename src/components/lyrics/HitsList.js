@@ -70,7 +70,7 @@ function LyricsList() {
     return (
       <div className={styles.HitList}>
         {hitsList.map((hit, index) => {
-          if (index >= hitsList.length - 8) {
+          if (index === hitsList.length - 8) {
             return (
               <div ref={lastSongElementRef} key={`${hit.result.id}-container`}>
                 <HitPreview hit={hit.result} key={hit.result.id} />
