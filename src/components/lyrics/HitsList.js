@@ -11,9 +11,6 @@ function LyricsList() {
   const [isLoadingMore, setIsLoadingMore] = useState(false);
 
   const observerLast = useRef();
-
-  
-
   const lastSongElementRef = useCallback(
     (node) => {
       let options = {
@@ -32,6 +29,28 @@ function LyricsList() {
         }, options)
       if (node) observerLast.current.observe(node)
     }, [])
+
+
+     const observerEndOfList = useRef();
+    const endOfList= useCallback(
+      (node) => {
+        let options = {
+          root: null,
+          rootMargin: '0px 0px 300px 0px',
+          threshold: 0
+        }
+        if (observerEndOfList.current) observerEndOfList.current.disconnect();
+        observerEndOfList.current = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.intersectionRatio > 0) {
+              setIsLoadingMore(true)
+            }
+          })
+  
+          }, options)
+        if (node) observerEndOfList.current.observe(node)
+      }, [])
+  
 
 
     useEffect(() => {
@@ -61,6 +80,7 @@ function LyricsList() {
             return <HitPreview hit={hit.result} key={hit.result.id} />;
           }
         })}
+        <div className="Loader" ref={endOfList}>
         {contextSearchResult.isLoading ? (
           <div>
             ...Loading More songs <DuckIcon></DuckIcon>
@@ -72,7 +92,8 @@ function LyricsList() {
           <div> No More songs Found ;-;</div>
         ) : (
           <div></div>
-        )}
+        )} 
+        </div>
       </div>
     );
   } else {
