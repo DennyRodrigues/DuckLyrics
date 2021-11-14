@@ -10,11 +10,6 @@ function LyricsList() {
   const [hitsList, setHitsList] = useState("");
   const [isLoadingMore, setIsLoadingMore] = useState(false);
 
-  
-  const loadMoreHandler = () =>{
-    setIsLoadingMore(true)
-  }
-
   const observerLast = useRef();
   const lastSongElementRef = useCallback(
     (node) => {
@@ -34,29 +29,6 @@ function LyricsList() {
         }, options)
       if (node) observerLast.current.observe(node)
     }, [])
-
-
-     const observerEndOfList = useRef();
-    const endOfList= useCallback(
-      (node) => {
-        let options = {
-          root: null,
-          rootMargin: '0px 0px 300px 0px',
-          threshold: 0
-        }
-        if (observerEndOfList.current) observerEndOfList.current.disconnect();
-        observerEndOfList.current = new IntersectionObserver(entries => {
-          entries.forEach(entry => {
-            if (entry.intersectionRatio > 0) {
-              setIsLoadingMore(true)
-            }
-          })
-  
-          }, options)
-        if (node) observerEndOfList.current.observe(node)
-      }, [])
-  
-
 
     useEffect(() => {
       if (!isLoadingMore) return
@@ -87,8 +59,7 @@ function LyricsList() {
           }
         })}
         </div>
-        <div className={styles.LoaderContainer} ref={endOfList}>
-          <button className={styles.LoadMoreButton} onClick={loadMoreHandler}>Load More</button>
+        <div className={styles.LoaderContainer}>
         {contextSearchResult.isLoading ? (
           <div>
             ...Loading More songs <DuckIcon></DuckIcon>
