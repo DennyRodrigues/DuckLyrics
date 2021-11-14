@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useRef, useCallback } from "react";
 import ContextSearch from "../store/ContextSearch";
 import HitPreview from "./HitPreview";
 import styles from "./HitsList.module.css";
@@ -10,41 +10,38 @@ function LyricsList() {
   const [hitsList, setHitsList] = useState("");
   const [isLoadingMore, setIsLoadingMore] = useState(false);
 
-  // Check if user reach the end of the page
-  const handleScroll = () => {
-    var scrollHeight = document.body.clientHeight;
-    let scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
-    
-    var scrollPos = window.innerHeight + scrollTop;
-    if (((scrollHeight - 300) >= scrollPos) / scrollHeight === 0) {
-      setIsLoadingMore(true);
-    }
-    
-  };
+  const observer = useRef();
 
-  // Get more songs to the context component when the user reach the end of the page
+  
 
-  //Check if the user is requesting more song
-  useEffect(() => {
-    // Return and don't fetch more date if the user is not at the end of the page (isLoadingmore is false)
-    if (!isLoadingMore) return;
-    // Fetch more songs using context if the user is on the end of the page. It will not fetch anymore if the context does not find anymore songs(var isLastPage is set false)
-    if (isLoadingMore && !contextSearchResult.isLastPage) {
-      contextSearchResult.loadMore();
-    }
-    setIsLoadingMore(false);
-  }, [isLoadingMore, contextSearchResult]);
+  const lastSongElementRef = useCallback(
+    (node) => {
+      let options = {
+        root: null,
+        rootMargin: '0px 0px 300px 0px',
+        threshold: 0
+      }
+      if (observer.current) observer.current.disconnect();
+      observer.current = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.intersectionRatio > 0) {
+            setIsLoadingMore(true)
+          }
+        })
 
-  // Add Eventwhen user scroll, this event will call a function check if user reach the end of the page.
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("touchmove", handleScroll);
-    return () => {
-      window.removeEventListener("touchmove", handleScroll);
-      window.removeEventListener("scroll", handleScroll);
-    }
-  }, []);
+        }, options)
+      if (node) observer.current.observe(node)
+    }, [])
 
+
+    useEffect(() => {
+      if (!isLoadingMore) return
+      if (!contextSearchResult.isLastPage){
+        contextSearchResult.loadMore();
+      }
+     setIsLoadingMore(false);
+     
+    }, [isLoadingMore, contextSearchResult])
   //  Using the context component, add the songs to  HitsList the first time the component render, and  Load more songs when the user gets to the end of the page.
   useEffect(() => {
     setHitsList(contextSearchResult.songs.trackList);
@@ -53,9 +50,17 @@ function LyricsList() {
   if (hitsList) {
     return (
       <div className={styles.HitList}>
-        {hitsList.map((hit) => (
-          <HitPreview hit={hit.result} key={hit.result.id} />
-        ))}
+        {hitsList.map((hit, index) => {
+          if (index >= hitsList.length - 4) {
+            return (
+              <div ref={lastSongElementRef} key={`${hit.result.id}-container `}>
+                <HitPreview hit={hit.result} key={hit.result.id} />
+              </div>
+            );
+          } else {
+            return <HitPreview hit={hit.result} key={hit.result.id} />;
+          }
+        })}
         {contextSearchResult.isLoading ? (
           <div>
             ...Loading More songs <DuckIcon></DuckIcon>
