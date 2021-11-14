@@ -14,7 +14,7 @@ function LyricsList() {
   const handleScroll = () => {
     var scrollHeight = document.body.clientHeight;
     var scrollPos = window.innerHeight + document.documentElement.scrollTop;
-    if ((scrollHeight - scrollPos) / scrollHeight === 0) {
+    if (((scrollHeight - 300) >= scrollPos) / scrollHeight === 0) {
       setIsLoadingMore(true);
     }
     
