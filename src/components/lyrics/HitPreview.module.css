@@ -14,9 +14,11 @@
 }
 .hitPreviewTitle{
     font-weight: 600;
+    word-wrap: break-word
 }
 .hitPreviewArtist{
     font-weight: 400;
+    word-wrap: break-word;
 }
 
 .HitPreview button{
