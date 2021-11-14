@@ -13,7 +13,7 @@ function LyricsList() {
   // Check if user reach the end of the page
   const handleScroll = () => {
     var scrollHeight = document.body.clientHeight;
-    var scrollPos = window.innerHeight + document.documentElement.scrollTop;
+    var scrollPos = window.innerHeight + window.pageYOffset;
     if (((scrollHeight - 300) >= scrollPos) / scrollHeight === 0) {
       setIsLoadingMore(true);
     }
