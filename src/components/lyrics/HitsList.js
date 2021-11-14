@@ -19,7 +19,7 @@ function LyricsList() {
       let options = {
         root: document.querySelector('#scrollArea'),
         rootMargin: '0px 0px 250px 0px',
-        threshold: 1.0
+        threshold: 0
       }
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver(entries => {
