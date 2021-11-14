@@ -24,7 +24,7 @@ function LyricsList() {
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver(entries => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) {
+          if (entry.intersectionRatio > 0) {
             setIsLoadingMore(true)
           }
         })
