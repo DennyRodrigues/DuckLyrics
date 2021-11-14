@@ -17,7 +17,7 @@ function LyricsList() {
   const lastSongElementRef = useCallback(
     (node) => {
       let options = {
-        root: document.querySelector('#scrollArea'),
+        root: null,
         rootMargin: '0px 0px 0px 0px',
         threshold: 0
       }
