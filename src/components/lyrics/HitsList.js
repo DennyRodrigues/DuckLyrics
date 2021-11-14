@@ -26,19 +26,18 @@ function LyricsList() {
 
   }, [contextSearchResult]);
   //  trying to fix for mobiles::: https://github.com/ankeetmaini/react-infinite-scroll-component/issues/277
-  useEffect(() => {
-    const scrollable = document.querySelector(styles.HitList);
-    scrollable.scrollTop = 0
-    } ,[hitsList])
+
 
   if (hitsList) {
     return (
-      <div className={styles.HitList}>
+      <div>
+      <div className={styles.HitList} id="hitList">
         {hitsList.map((hit, index) => {
           return <HitPreview hit={hit.result} key={hit.result.id} />
         }
         )}
-        <InfiniteScroll
+      </div>
+      <InfiniteScroll
   dataLength={hitsList.length} //This is important field to render the next data
   next={loadMore}
   hasMore={stillHasMorePages}
@@ -46,12 +45,9 @@ function LyricsList() {
   endMessage={
     <div> <DuckIcon></DuckIcon> <span> No more songs found ;-; </span></div>
   }
-
 >
 </InfiniteScroll>
       </div>
-      
-      
     );
   } else {
     return <Spinner />;
