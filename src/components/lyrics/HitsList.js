@@ -36,7 +36,7 @@ function LyricsList() {
     // Return and don't fetch more date if the user is not at the end of the page (isLoadingmore is false)
     if (!isLoadingMore) return
     // Fetch more songs using context if the user is on the end of the page. It will not fetch anymore if the context does not find anymore songs(var isLastPage is set false)
-    if(isLoadingMore && !contextSearchResult.isLastPage){
+    if(!contextSearchResult.isLastPage){
       contextSearchResult.loadMore()
     }
     setIsLoadingMore(false);
