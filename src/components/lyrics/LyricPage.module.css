@@ -1,6 +1,6 @@
 .LyricPage {
   background: #eee;
-  padding: 0px 24px 24px 0px;
+  padding: 0px 0px 24px 0px;
   display: grid;
   grid-template-columns: 1.5fr 1fr;
 }
@@ -109,4 +109,9 @@
   .LyricPageInfoBox{
     margin-bottom: 24px;
   }
+  .YoutubeContainer{
+    width: 80%;
+
+  }
+  
 }
