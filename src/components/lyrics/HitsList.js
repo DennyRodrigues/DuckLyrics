@@ -10,7 +10,7 @@ function LyricsList() {
   const [hitsList, setHitsList] = useState("");
   const [isLoadingMore, setIsLoadingMore] = useState(false);
 
-  const observer = useRef();
+  const observerLast = useRef();
 
   
 
@@ -21,8 +21,8 @@ function LyricsList() {
         rootMargin: '0px 0px 300px 0px',
         threshold: 0
       }
-      if (observer.current) observer.current.disconnect();
-      observer.current = new IntersectionObserver(entries => {
+      if (observerLast.current) observerLast.current.disconnect();
+      observerLast.current = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (entry.intersectionRatio > 0) {
             setIsLoadingMore(true)
@@ -30,7 +30,7 @@ function LyricsList() {
         })
 
         }, options)
-      if (node) observer.current.observe(node)
+      if (node) observerLast.current.observe(node)
     }, [])
 
 
@@ -51,9 +51,9 @@ function LyricsList() {
     return (
       <div className={styles.HitList}>
         {hitsList.map((hit, index) => {
-          if (index >= hitsList.length - 4) {
+          if (index >= hitsList.length - 8) {
             return (
-              <div ref={lastSongElementRef} key={`${hit.result.id}-container `}>
+              <div ref={lastSongElementRef} key={`${hit.result.id}-container`}>
                 <HitPreview hit={hit.result} key={hit.result.id} />
               </div>
             );
