@@ -36,6 +36,7 @@ function LyricsList() {
   // Add Eventwhen user scroll, this event will call a function check if user reach the end of the page.
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
+    window.addEventListener("touchmove", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
