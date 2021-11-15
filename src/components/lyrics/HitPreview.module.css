@@ -45,7 +45,7 @@
 }
 @media (max-width:610px){
     .HitPreview{
-        width: 100%;
+        width:auto;
         min-height: fit-content;
     }   
 }
