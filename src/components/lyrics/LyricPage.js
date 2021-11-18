@@ -18,7 +18,7 @@ function LyricPage(props) {
   useEffect(() => {
     //Get lyrics of the song
     if (url) {
-      getLyrics(url).then((lyrics) => {
+      getLyrics(`https://add-cors-to-requests.denny-rodrigues-carmo.workers.dev/?${url}`).then((lyrics) => {
         setLyrics(lyrics);
         setEnglishTranslation(lyrics);
       });
@@ -60,7 +60,6 @@ function LyricPage(props) {
     return (
       <div className={styles.LyricPage}>
         <h1>{songData.title}</h1>
-        <div className={styles.row}>
           <div className={styles.LyricPageInfoBox}>
             <img
               src={songData.song_art_image_thumbnail_url}
@@ -78,19 +77,17 @@ function LyricPage(props) {
         </button></li>
             </ul>
           </div>
-          {youtuberLinkEmbed? <iframe
-            width="420"
-            height="315"
+          {youtuberLinkEmbed?
+          <div className={styles.YoutubeContainer}><iframe
             src={youtuberLinkEmbed}
             title="youtuber"
-          ></iframe>:<div></div>}
-        </div>
-        <div className={styles.LyricsBox}>
+          ></iframe></div>:<div></div>}
+          
+          <div className={styles.LyricsBox}>
           <h2>Lyrics</h2>
-          {duckTranslation? <button onClick={translateToEnglish}>Translate to English</button>: <button onClick={translateToDuck}>Translate to Duck Language</button> }
+          {duckTranslation? <button onClick={translateToEnglish}>Translate to Human Language</button>: <button onClick={translateToDuck}>Translate to Duck Language</button> }
           {lyrics ? <pre> {lyrics} </pre> : <div>Loading Lyrics... <DuckIcon/> </div>}
         </div>
-        
       </div>
     );
   } else {

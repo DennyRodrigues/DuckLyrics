@@ -11,12 +11,15 @@
     height: fit-content;
     justify-content: space-between;
     align-content: space-between;
+    overflow: hidden;
 }
 .hitPreviewTitle{
     font-weight: 600;
+    word-wrap: break-word
 }
 .hitPreviewArtist{
     font-weight: 400;
+    word-wrap: break-word;
 }
 
 .HitPreview button{
@@ -34,10 +37,15 @@
 .HitPreview button:active{
     outline: none;
 }
-@media (max-width:768px){
+@media (max-width:885px){
     .HitPreview{
-        width: 45%;
+        width: 30%;
         min-height: fit-content;
-    
+    }   
+}
+@media (max-width:610px){
+    .HitPreview{
+        width:auto;
+        min-height: fit-content;
     }   
 }
