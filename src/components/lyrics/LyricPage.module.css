@@ -77,13 +77,13 @@
 .AlbumSubText{
   display: inline-block;
   font-size: 16px;
-  margin-bottom: 18px;
+  margin-bottom: 12px;
   padding: 0 24px;
 }
 .AlbumTitle{
   text-align: center;
   font-size: 32px;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 .AlbumList{
   margin: 0px 16px 0px 64px;
@@ -91,7 +91,8 @@
   grid-template-columns: 1fr 1fr;
   justify-content: center;
   justify-items: left;
-  gap:20px;
+  row-gap:20px;
+  column-gap: 28px;
 
 
 }
