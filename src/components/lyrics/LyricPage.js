@@ -66,11 +66,11 @@ function LyricPage(props) {
   };
 
   if (songData) {
-    // Filter to get only the youtube Link from the  API response(This is needed beacause the API gives different medias links(like spotify and others))
+    // Filter to get only the youtube Link from the  API response(This is needed beacause the API gives different medias links, like spotify and others)
     const youtubeLink = songData.media.filter(
       (song) => song.provider === "youtube"
     )[0];
-    // Replace to make a youtuber embbed link instead of a watch(This will allow the url to be placed  in the inframe tag). Change
+    // Replace to make a youtuber embbed link instead of a watch(This will allow the url to be placed  in the inframe tag).
     var youtuberLinkEmbed = "";
     if (youtubeLink) {
       youtuberLinkEmbed = youtubeLink.url.replace("watch?v=", "embed/");
@@ -123,7 +123,7 @@ function LyricPage(props) {
           <ul className={styles.AlbumList}>
             {albumTrackList.tracks.map((song) =>{
               return (<li key={song.song.id} className={styles.AlbumItem}
-              > <Link
+              > <span>&#9834;</span> <Link
                 to={`/lyrics/${song.song.id}`}
                 className="Link"
               >
