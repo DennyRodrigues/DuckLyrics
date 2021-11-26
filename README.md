@@ -29,10 +29,10 @@ The website uses the Genius API to get the information about the song, the song 
 ##### What are the files in this project 
 It follows a normal react folder structure. The file package-json contais all the dependencies of the project, which means all the external javascript libraries used in the project, including react. 
 
-The folder public contains the index.html that will be send to the user with the logo icons. 
+The folder public contains the index.html that will be send to the user.
 
 The last folder is the src, it contains the react components that will be render in the site.
 
 ##### How to use files in this project
-If you want to use the files of this project for production and deployment, you need to use the command "npm run build" that creates an new folder "build" wich can be used for deployment.
+You will need to use  Node.js, to use the files of the project. If you want to use the files of this project for production and deployment, you need to use two commands  "npm install", then "npm run build" that creates an new folder "build" wich can be used for deployment. To use this project in your machine with a local development server, you need use "npm install", then "npm start".
 
