@@ -20,7 +20,7 @@ function LyricPage(props) {
   useEffect(() => {
     //Get lyrics and album information of the song after the song information is fetched.
     if (WebPageurl) {
-      // Get the Lyrics
+      // Get the Lyrics using a proxy server
       getLyrics(
         `https://add-cors-to-requests.denny-rodrigues-carmo.workers.dev/?${WebPageurl}`
       ).then((lyrics) => {
