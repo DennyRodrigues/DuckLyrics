@@ -39,7 +39,6 @@ function LyricPage(props) {
           return res.json();
         })
         .then((res) => {
-          console.log(res.response);
           setAlbumTrackList(res.response);
         })
         .catch((err) => console.log(err));
