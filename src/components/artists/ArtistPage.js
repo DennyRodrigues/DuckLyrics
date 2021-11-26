@@ -32,7 +32,7 @@ const ArtistPage = () => {
             <img src={artistData.image_url} alt="Artist" />
           </div>
         <div className={styles.about}>
-          <h2> About the Artist</h2>
+          <h2> About</h2>
           <pre>{artistData.description.plain}</pre>
         </div>
       </div>

@@ -25,6 +25,11 @@
     flex-grow: 0.25;
     padding-left: 100px;
 }
+.SearchIcon{
+    display: none;
+    width: 24px;
+    height: 24px;
+}
 .title{
      margin: 0;
      display: inline;
@@ -56,5 +61,11 @@
     }
     .main-nav-bar .About{
         padding-right:0;
+    }
+    .Search span{
+        display: none;
+    }
+    .SearchIcon{
+        display: block;
     }
 }
