@@ -1,10 +1,10 @@
 
 # DUCKLYRICS
-#### Video Demo:  <URL HERE>
+#### Video Demo: https://www.youtube.com/watch?v=dbkubRGtvxQ
 #### Description:
 
 #####  Abstract
-The project Duck Lyrics is a site to search songs and see the lyrics. The site also shows a short biographical information about the artist. In the lyrics part, you can press a button to transform all the words of the lyrics in 'quack', that's why the name is Duck Lyrics.
+The project Duck Lyrics is a website to search songs and see the lyrics. It also shows a short biographical information about the artist. In the lyrics part, you can press a button to transform all the words of the lyrics in 'quack', that's why the name is Duck Lyrics.
 
 ##### What are the pages of the site
 The homepage of the site is very simple, it has a form for the user to write a word or phrase to search for songs. When the user submit the search form, It will show some lists of cards with the song title, artist name, and a link that the user can click to be redirect to the lyrics page. This part has an infinite scroll, so, when the user reachs the end this page, more songs will start to load and appear. If the user did not search anything, this page will show random songs to the user.
